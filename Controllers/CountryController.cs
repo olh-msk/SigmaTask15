@@ -42,6 +42,23 @@ namespace SigmaTask15.Controllers
             return country;
         }
 
+        //отримати кількість міст у країні по ID--------------
+
+        //у нас не можу бути онакові сигнатури у Get, Put, Post
+        // і Delete, бо тоді запит не розуміє, до якого звертатись
+
+        //GET nums of cities in country
+        [HttpGet("NumOfCities/{id}")]
+        public async Task<ActionResult<int>> GetNumOfCities(long id)
+        {
+            var country = await _context.Countries.FindAsync(id);
+            if(country == null)
+            {
+                return NotFound();
+            }
+            return country.Cities.Count;
+        }
+
         // PUT: api/Country/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

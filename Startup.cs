@@ -12,6 +12,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+//використовуємо ІSwagger пакети
+using Swashbuckle.AspNetCore.Swagger;
+using Swashbuckle.AspNetCore.SwaggerGen;
+using Swashbuckle.AspNetCore.SwaggerUI;
+
 namespace SigmaTask15
 {
     public class Startup
@@ -32,6 +37,8 @@ namespace SigmaTask15
             //для того, щоб воно було пов'язано 
             //та запускалось при старті
             services.AddDbContext<AppDBContext>();
+
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SigmaTask15", Version = "v1" });
